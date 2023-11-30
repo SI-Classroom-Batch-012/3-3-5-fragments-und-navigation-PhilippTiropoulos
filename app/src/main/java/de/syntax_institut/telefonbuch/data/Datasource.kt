@@ -1,5 +1,6 @@
 package de.syntax_institut.telefonbuch.data
 
+import de.syntax_institut.telefonbuch.R
 import de.syntax_institut.telefonbuch.data.model.Contact
 
 /**
@@ -13,11 +14,11 @@ class Datasource {
      */
     fun loadContacts(): MutableList<Contact> {
         return mutableListOf(
-            Contact("Lionel Messi", "+49 1595 9367862"),
-            Contact("Cristiano Ronaldo", "+49 15047 284702"),
-            Contact("Franz Beckenbauer", "+49 1598 7361226"),
-            Contact("Pelé", "+49 1513 5007043"),
-            Contact("Lothar Matthäus", "+49 15596 033203"),
+            Contact("Lionel Messi", "+49 1595 9367862", R.drawable.messiii),
+            Contact("Cristiano Ronaldo", "+49 15047 284702", R.drawable.ronaldo),
+            Contact("Franz Beckenbauer", "+49 1598 7361226", R.drawable.becken),
+            Contact("Pelé", "+49 1513 5007043", R.drawable.peele),
+            Contact("Lothar Matthäus", "+49 15596 033203", R.drawable.matthaeus),
             Contact("Paul Breitner", "+49 15027 785378"),
             Contact("Neymar", "+49 15574 793889"),
             Contact("Bastian Schweinsteiger", "+49 163 55846780"),

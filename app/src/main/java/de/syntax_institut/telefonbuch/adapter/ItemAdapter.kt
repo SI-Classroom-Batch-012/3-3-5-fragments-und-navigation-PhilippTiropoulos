@@ -2,9 +2,11 @@ package de.syntax_institut.telefonbuch.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import de.syntax_institut.telefonbuch.data.model.Contact
 import de.syntax_institut.telefonbuch.databinding.ListItemBinding
+import de.syntax_institut.telefonbuch.ui.MainFragmentDirections
 
 /**
  * Diese Klasse organisiert mithilfe der ViewHolder Klasse das Recycling
@@ -35,6 +37,13 @@ class ItemAdapter(
 
         holder.binding.tvItemName.text = item.name
         holder.binding.tvItemNumber.text = item.number
+        holder.binding.ivMainlist.setImageResource(item.imageResource)
+
+
+
+        holder.binding.contactCard.setOnClickListener{
+            holder.itemView.findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(position))
+        }
     }
 
     /**

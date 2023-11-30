@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.DetailFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:id="@+id/ivEditPicture"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/avatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.75" />
+
+    <TextView
+        android:id="@+id/tvDetailName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/ivEditPicture"
+        app:layout_constraintStart_toStartOf="@+id/ivEditPicture"
+        app:layout_constraintTop_toBottomOf="@+id/ivEditPicture" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Edit"
+        app:layout_constraintEnd_toEndOf="@+id/tvPhoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/tvPhoneNumber" />
+
+    <ImageButton
+        android:id="@+id/btnCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/background"
+        android:backgroundTint="?attr/colorPrimary"
+        android:fadingEdge="vertical"
+        android:src="@drawable/baseline_local_phone_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="?attr/colorSecondaryVariant" />
+
+    <TextView
+        android:id="@+id/tvPhoneNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/background_rounded"
+        android:elevation="10dp"
+        android:padding="12dp"
+        android:text="+49 1598 7361226"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/ivEditPicture"
+        app:layout_constraintStart_toStartOf="@+id/ivEditPicture"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailName" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

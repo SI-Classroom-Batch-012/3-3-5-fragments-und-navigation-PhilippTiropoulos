@@ -16,4 +16,5 @@
     <color name="SI_Grey2">#DDDDDD</color>
     <color name="SI_Grey3">#535353</color>
     <color name="SI_Grey4">#151515</color>
+    <color name="buttonDisabledColor">?attr/colorButtonNormal</color>
 </resources>
