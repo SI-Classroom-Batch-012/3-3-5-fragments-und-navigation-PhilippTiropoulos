@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import de.syntax_institut.telefonbuch.R
 import de.syntax_institut.telefonbuch.data.model.Contact
 import de.syntax_institut.telefonbuch.databinding.ListItemBinding
 import de.syntax_institut.telefonbuch.ui.MainFragmentDirections
@@ -12,7 +13,7 @@ import de.syntax_institut.telefonbuch.ui.MainFragmentDirections
  * Diese Klasse organisiert mithilfe der ViewHolder Klasse das Recycling
  */
 class ItemAdapter(
-    private val dataset: List<Contact>
+    private var dataset: List<Contact>
 ) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
     /**
@@ -44,6 +45,23 @@ class ItemAdapter(
         holder.binding.contactCard.setOnClickListener{
             holder.itemView.findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(position))
         }
+    }
+
+    fun insertContact(contact: Contact) {
+        dataset += contact
+        notifyItemInserted(dataset.size)
+    }
+
+    fun standardImage(contact: Contact) {
+        val pos = dataset.indexOf(contact)
+        contact.imageResource = R.drawable.avatar
+        notifyItemChanged(pos)
+    }
+
+    fun changeImage(contact: Contact, imageUri: Uri) {
+        val pos = dataset.indexOf(contact)
+        dataset[pos].imageUri
+        notifyItemChanged(pos)
     }
 
     /**

@@ -17,7 +17,7 @@ import de.syntax_institut.telefonbuch.databinding.ActivityMainBinding
  */
 class MainActivity : AppCompatActivity() {
 
-    var dataset: MutableList<Contact> = mutableListOf()
+    var dataset: List<Contact> = emptyList()
 /*    object ContactRepository {
         var contacts: MutableList<Contact> = mutableListOf()
 
@@ -44,32 +44,13 @@ class MainActivity : AppCompatActivity() {
         // hole die Liste mit den Kontakten
 
 
-        dataset = Datasource().loadContacts()
+        dataset = Datasource().loadContacts(this)
 
-        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+       /* onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 binding.navhostFragmentContainer.findNavController().navigateUp()
             }
-        })
-   /*
-        // die RecyclerView bekommt den Adapter
-        val itemAdapter = ItemAdapter(contacts)
-        binding.recyclerView.adapter = itemAdapter
+        })*/
 
-        // Button fügt einen Listeneintrag hinzu
-        binding.btnAdd.setOnClickListener {
-            // Hole den Inhalt aus den Textfeldern
-            val name = binding.inName.text.toString()
-            val number = binding.inPhoneNumber.text.toString()
-
-            // Falls in beiden Textfeldern etwas steht
-            if (name != "" && number != "") {
-                val position = contacts.size // kann auch ein anderer Index <= contacts.size sein
-                contacts.add(position, Contact(name, number))
-                itemAdapter.notifyItemInserted(position)
-                binding.inName.setText("")
-                binding.inPhoneNumber.setText("")
-            }
-        }*/
     }
 }

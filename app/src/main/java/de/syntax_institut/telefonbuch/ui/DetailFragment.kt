@@ -1,13 +1,18 @@
 package de.syntax_institut.telefonbuch.ui
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import de.syntax_institut.telefonbuch.MainActivity
+import de.syntax_institut.telefonbuch.R
 import de.syntax_institut.telefonbuch.databinding.FragmentDetailBinding
 import de.syntax_institut.telefonbuch.databinding.FragmentMainBinding
 
@@ -25,6 +30,10 @@ class DetailFragment : Fragment() {
         return binding.root
     }
 
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Dataset "rüberholen"
@@ -49,8 +58,6 @@ class DetailFragment : Fragment() {
 
 
 
+
     }
-
-
-
 }

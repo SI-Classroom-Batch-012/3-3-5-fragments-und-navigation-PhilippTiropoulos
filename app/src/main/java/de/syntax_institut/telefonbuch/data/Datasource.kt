@@ -1,5 +1,8 @@
 package de.syntax_institut.telefonbuch.data
 
+import android.content.Context
+import android.net.Uri
+import de.syntax_institut.telefonbuch.MainActivity
 import de.syntax_institut.telefonbuch.R
 import de.syntax_institut.telefonbuch.data.model.Contact
 
@@ -12,7 +15,13 @@ class Datasource {
      * Diese Funktion liefert eine Liste von Contact Objekten zurück,
      * in denen die Namen und die Telefonnummern gespeichert sind
      */
-    fun loadContacts(): MutableList<Contact> {
+    fun loadContacts(context: Context): MutableList<Contact> {
+        val assetManager = context.assets
+        val images = assetManager.list()
+
+        val imageUris = images.map { name ->
+            Uri.parse("")
+        }
         return mutableListOf(
             Contact("Lionel Messi", "+49 1595 9367862", R.drawable.messiii),
             Contact("Cristiano Ronaldo", "+49 15047 284702", R.drawable.ronaldo),

@@ -1,6 +1,9 @@
 package de.syntax_institut.telefonbuch.ui
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.ContentResolver
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,13 +11,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import android.widget.PopupMenu
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import de.syntax_institut.telefonbuch.MainActivity
 import de.syntax_institut.telefonbuch.R
+import de.syntax_institut.telefonbuch.adapter.ItemAdapter
 import de.syntax_institut.telefonbuch.databinding.FragmentEditBinding
-import de.syntax_institut.telefonbuch.databinding.FragmentMainBinding
 
 class EditFragment : Fragment() {
 
@@ -76,9 +80,44 @@ class EditFragment : Fragment() {
            // if (binding.tilName.editText.cha)
         }
 
+        val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data: Intent? = result.data
+                val selectedImageUri = data?.data
+                val imageResource = convertUriToResource
+                binding.ivEditPicture.setImageURI(selectedImageUri)
+            }
+        }
+
+        binding.ivEditPicture.setOnClickListener {
+            val popup = PopupMenu(it.context, it)
+            popup.menu.add("Bild ändern")
+            popup.menu.add("Bild löschen")
 
 
+            val itemAdapter = ItemAdapter(mainActivity.dataset)
+
+            popup.setOnMenuItemClickListener { menuItem ->
+                when (menuItem.title) {
+                    "Bild ändern" -> {
+
+                        val intent = Intent(Intent.ACTION_PICK)
+                        intent.type = "image/*"
+
+                        resultLauncher.launch(intent)
+
+                    }
+                    "Bild löschen" -> {
+                        itemAdapter.standardImage(contacts[pos])
+                        binding.ivEditPicture.setImageResource(R.drawable.avatar)
+                    }
+                }
+                true
+            }
+            popup.show()
+        }
     }
+
 
 
 
