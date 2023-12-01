@@ -1,5 +1,6 @@
 package de.syntax_institut.telefonbuch.adapter
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -38,7 +39,7 @@ class ItemAdapter(
 
         holder.binding.tvItemName.text = item.name
         holder.binding.tvItemNumber.text = item.number
-        holder.binding.ivMainlist.setImageResource(item.imageResource)
+        holder.binding.ivMainlist.setImageURI(item.imageUri)
 
 
 
@@ -54,13 +55,13 @@ class ItemAdapter(
 
     fun standardImage(contact: Contact) {
         val pos = dataset.indexOf(contact)
-        contact.imageResource = R.drawable.avatar
+        dataset[pos].imageUri = Uri.parse("file:///android_asset/avatar.png")
         notifyItemChanged(pos)
     }
 
     fun changeImage(contact: Contact, imageUri: Uri) {
         val pos = dataset.indexOf(contact)
-        dataset[pos].imageUri
+        dataset[pos].imageUri = imageUri
         notifyItemChanged(pos)
     }
 

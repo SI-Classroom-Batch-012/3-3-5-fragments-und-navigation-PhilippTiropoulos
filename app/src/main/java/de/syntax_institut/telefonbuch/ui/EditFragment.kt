@@ -46,7 +46,7 @@ class EditFragment : Fragment() {
         val pos = args.position
         val item = contacts[pos]
 
-        binding.ivEditPicture.setImageResource(item.imageResource)
+        binding.ivEditPicture.setImageURI(item.imageUri)
         binding.tilName.editText?.setText(item.name)
         binding.tilPhoneNumber.editText?.setText(item.number)
         binding.button2.isEnabled = false
@@ -82,10 +82,15 @@ class EditFragment : Fragment() {
 
         val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
+                val item = mainActivity.dataset[pos]
                 val data: Intent? = result.data
                 val selectedImageUri = data?.data
-                val imageResource = convertUriToResource
-                binding.ivEditPicture.setImageURI(selectedImageUri)
+                val itemAdapter = ItemAdapter(mainActivity.dataset)
+                if (selectedImageUri != null) {
+                    itemAdapter.changeImage(item, selectedImageUri)
+                    binding.ivEditPicture.setImageURI(selectedImageUri)
+                }
+
             }
         }
 

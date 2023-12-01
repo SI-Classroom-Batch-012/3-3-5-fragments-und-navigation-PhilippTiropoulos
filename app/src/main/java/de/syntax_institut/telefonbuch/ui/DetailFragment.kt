@@ -45,7 +45,7 @@ class DetailFragment : Fragment() {
         val item = contacts[pos]
 
         // textViews usw. befüllen
-        binding.ivEditPicture.setImageResource(item.imageResource)
+        binding.ivEditPicture.setImageURI(item.imageUri)
         binding.tvDetailName.text = item.name
         binding.tvPhoneNumber.text = item.number
 
